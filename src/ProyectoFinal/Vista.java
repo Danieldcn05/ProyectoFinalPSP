@@ -9,7 +9,6 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import javax.swing.UIManager;
 import java.awt.Font;
 import javax.swing.JLabel;
  
@@ -85,13 +84,13 @@ public class Vista {
 		
 		frame.getContentPane().add(btnNewButton_1);
 		
-		JButton btnNewButton_2 = new JButton("EXPLORER");
+		JButton btnNewButton_2 = new JButton("CALCULADORA");
 		btnNewButton_2.setFont(new Font("Comic Sans MS", Font.BOLD, 11));
 		btnNewButton_2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				String archivo = textField_1.getText();
-				gestor.abrirPrograma("explorer.exe", archivo);
+				gestor.abrirPrograma("calc.exe", archivo);
 			}
 		});
 		

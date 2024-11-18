@@ -20,26 +20,33 @@ public class Gestor {
 	// Borrar historial
 	// Que no salgan url repetidas en el historial
 
-	public void abrirPrograma(String path, String archivo) {
+	public void abrirPrograma(String program, String archivo) {
+		File file = new File(archivo);
 		if (archivo.isEmpty()) {
-			JOptionPane.showMessageDialog(null, "Introduce el nombre del archivo que quieres abrir.", "Error",
-					JOptionPane.ERROR_MESSAGE);
-			return;
-		} else {
-			ProcessBuilder pb = new ProcessBuilder(path, archivo); // notepad, mspaint.exe, explorer.exe
+			ProcessBuilder pb = new ProcessBuilder(program); // notepad, mspaint.exe, explorer.exe
 			try {
 				Process p = pb.start();
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
+		} else if(file.exists()) {
+			
+			ProcessBuilder pb = new ProcessBuilder(program, archivo); // notepad, mspaint.exe, explorer.exe
+			try {
+				Process p = pb.start();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}else{
+			JOptionPane.showMessageDialog(null, "El archivo no existe.", "Error", JOptionPane.ERROR_MESSAGE);
 		}
 
 	}
 
 	public void abrirWeb(String url) {
 		try {
-			String chromePath = "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe";// C:\\Program
-																									// Files\\Google\\Chrome\\Application\\chrome.exe
+			String chromePath = "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe";// C:\\Program\\Files\\Google\\Chrome\\Application\\chrome.exe
+																									
 
 			ProcessBuilder processBuilder = new ProcessBuilder(chromePath, url);
 			processBuilder.start();
